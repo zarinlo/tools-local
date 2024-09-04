@@ -203,6 +203,11 @@ gulp.task('build:js', () => {
   const streams = [];
 
   const cardSorterSrc = 'app/js/bundle/cardsorter.js';
+  const cardSorterDir = path.dirname(cardSorterSrc);
+
+   // Ensure the directory exists
+   fs.mkdirSync(cardSorterDir, { recursive: true });
+
   if (!fs.existsSync(cardSorterSrc)) {
     const cardSorterContent = '// Placeholder for cardsorter.js\n';
     fs.writeFileSync(cardSorterSrc, cardSorterContent);
